@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Board.h"
+#include <time.h>
 
 using namespace std;
 
@@ -11,6 +12,7 @@ Board::Board(int newSize)
 
 Board::~Board()
 {
+	delete blocks;
 }
 
 void Board::Create()
@@ -36,7 +38,7 @@ void Board::setSize()
 
 void Board::Print()
 {
-	int data;
+	/*int data;
 	for (int i = 0; i < (size*size); i++)
 	{
 		data = blocks[i].getValue();
@@ -46,11 +48,20 @@ void Board::Print()
 			cout << endl;
 		else
 			cout << "\t|\t";
+	}*/
+
+	for (int i = 0; i < (size*size); i++)
+	{
+		blocks[i].Print();
+		cout << "\t|\t";
+		if ((i+1) % size == 0)
+			cout << endl;
 	}
 }
 
 void Board::Scramble()
 {
+	srand(time(NULL));
 	do
 	{
 		for (int i = 0; i < size * 1000; i++)

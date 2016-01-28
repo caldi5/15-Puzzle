@@ -18,3 +18,11 @@ int Block::getValue()
 {
 	return value;
 }
+
+void Block::Print()
+{
+	if (value == 0)
+		cout << " ";
+	else
+		cout << value;
+}
