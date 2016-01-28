@@ -9,70 +9,80 @@ Game::~Game()
 {
 }
 
-void Game::Start()
+void Game::Play()
 {
-	int size;
-	do
-	{
-		cout << "What size do you want?" << endl;
-		cin >> size;
-	} while (size < 1 || size > 10);
-
-	Player player;
-	Board b(size);
-	char input;
-
+	b.setSize();
 	b.Scramble();
+
+	char input;	
 	
-	while (!b.CheckIfSolved())
+	do
 	{
 		system("cls");
 		b.Print();
-		cout << endl << "Moves: " << player.getMoves() << "  Player: " << player.getPos();
-		input = _getch();
-
-		int playerPos = player.getPos();
-		int size = b.getSize();
-		// Move
-		switch (input)
-		{
-		case ('w') :
-			if (playerPos - size >= 0)
-			{
-				player.setPos(playerPos - size);
-				b.Move(playerPos - size, playerPos);
-				player.addMove();
-			}
-			break;
-		case ('s') :
-			if (playerPos + size < size*size)
-			{
-				player.setPos(playerPos + size);
-				b.Move(playerPos + size, playerPos);
-				player.addMove();
-			}
-			break;
-		case ('a') :
-			if (playerPos % size != 0)
-			{
-				player.setPos(playerPos - 1);
-				b.Move(playerPos - 1, playerPos);
-				player.addMove();
-			}
-			break;
-		case ('d') :
-			if ((playerPos + 1) % size != 0)
-			{
-				player.setPos(playerPos + 1);
-				b.Move(playerPos + 1, playerPos);
-				player.addMove();
-			}
-			break;
-		default:
-			break;
-		}
-	}
+		cout << endl << "Moves: " << player.getMoves();
+		Input();
+	} while (!b.CheckIfSolved());
 
 	cout << "Congratulations! You won in " << player.getMoves() << "!" << endl;
 
+}
+
+void Game::Input()
+{
+	char input;
+	input = _getch();
+
+	int playerPos = player.getPos();
+	int size = b.getSize();
+
+	// Move
+	switch (input)
+	{
+	case ('w') :
+		if (playerPos - size >= 0)
+		{
+			player.setPos(playerPos - size);
+			b.Move(playerPos - size, playerPos);
+			player.addMove();
+		}
+		break;
+	case ('s') :
+		if (playerPos + size < size*size)
+		{
+			player.setPos(playerPos + size);
+			b.Move(playerPos + size, playerPos);
+			player.addMove();
+		}
+		break;
+	case ('a') :
+		if (playerPos % size != 0)
+		{
+			player.setPos(playerPos - 1);
+			b.Move(playerPos - 1, playerPos);
+			player.addMove();
+		}
+		break;
+	case ('d') :
+		if ((playerPos + 1) % size != 0)
+		{
+			player.setPos(playerPos + 1);
+			b.Move(playerPos + 1, playerPos);
+			player.addMove();
+		}
+		break;
+	case ('r') :
+		Reset();
+		break;
+	default:
+		break;
+	}
+}
+
+void Game::Reset()
+{
+	int input;
+	system("cls");
+	b.Reset();
+	player.Reset();
 }

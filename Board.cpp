@@ -9,6 +9,10 @@ Board::Board(int newSize)
 	Create();
 }
 
+Board::~Board()
+{
+}
+
 void Board::Create()
 {
 	blocks = new Block[size*size];
@@ -19,12 +23,14 @@ void Board::Create()
 	}
 }
 
-Board::~Board()
+void Board::setSize()
 {
-}
-
-void Board::setSize(int newSize)
-{
+	int newSize;
+	do
+	{
+		cout << "What size do you want?" << endl;
+		cin >> newSize;
+	} while (newSize < 2 || newSize > 8);
 	size = newSize;
 }
 
@@ -58,9 +64,9 @@ void Board::Scramble()
 
 bool Board::CheckIfSolved()
 {
-	bool foundPlayer = false;
 	for (int i = 0; i < size*size; i++)
 	{
+		//cout << i << " " << blocks[i].getValue() << endl << endl;
 		if (blocks[i].getValue() != i)
 			return false;
 	}
@@ -81,5 +87,8 @@ int Board::getSize()
 
 void Board::Reset()
 {
+	delete[] blocks;
+	setSize();
 	Create();
+	Scramble();
 }

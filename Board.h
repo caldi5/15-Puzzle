@@ -7,7 +7,7 @@ public:
 	Board(int newSize = 4);
 	~Board();
 	
-	void setSize(int newSize);
+	void setSize();
 	void Print();
 	void Scramble();
 	bool CheckIfSolved();

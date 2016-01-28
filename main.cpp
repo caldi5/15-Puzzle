@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
 	Game game;
-	game.Start();
+	game.Play();
 
 	system("pause");
 	return 0;

@@ -12,9 +12,12 @@ class Game
 public:
 	Game();
 	~Game();
-	void Start();
+	void Play();
+	void Input();
 	void Reset();
 
 private:
+	Board b;
+	Player player;
 };
 
