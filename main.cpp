@@ -1,9 +1,3 @@
-/*
-	TODO:
-	- Fixa destructors
-	
-*/
-
 #include <iostream>
 #include "Game.h"
 

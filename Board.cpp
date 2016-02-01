@@ -32,7 +32,7 @@ void Board::setSize()
 	{
 		cout << "What size do you want?" << endl;
 		cin >> newSize;
-	} while (newSize < 2 || newSize > 8);
+	} while (newSize < 3 || newSize > 10);
 	size = newSize;
 }
 
