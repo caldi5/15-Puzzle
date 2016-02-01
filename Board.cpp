@@ -38,18 +38,6 @@ void Board::setSize()
 
 void Board::Print()
 {
-	/*int data;
-	for (int i = 0; i < (size*size); i++)
-	{
-		data = blocks[i].getValue();
-		if (data != 0)
-			cout << blocks[i].getValue();
-		if ((i + 1) % size == 0)
-			cout << endl;
-		else
-			cout << "\t|\t";
-	}*/
-
 	for (int i = 0; i < (size*size); i++)
 	{
 		blocks[i].Print();
@@ -68,7 +56,7 @@ void Board::Scramble()
 		{
 			int from = rand() % (size*size - 1) + 1;
 			int to = rand() % (size*size - 1) + 1;
-			Move(from, to);
+			Swap(from, to);
 		}
 	} while (CheckIfSolved());
 }
@@ -84,9 +72,9 @@ bool Board::CheckIfSolved()
 	return true;
 }
 
-void Board::Move(int from, int to)
+void Board::Swap(int from, int to)
 {
-	temp = blocks[to];
+	Block temp = blocks[to];
 	blocks[to] = blocks[from];
 	blocks[from] = temp;
 }

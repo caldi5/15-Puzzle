@@ -3,7 +3,6 @@
 #include "Board.h"
 #include <iostream>
 #include <conio.h>
-#include <iostream>
 
 using namespace std;
 
@@ -15,6 +14,7 @@ public:
 	void Play();
 	void Input();
 	void Reset();
+	void Quit();
 
 private:
 	Board b;

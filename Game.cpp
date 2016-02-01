@@ -43,7 +43,7 @@ void Game::Input()
 		if (playerPos - size >= 0)
 		{
 			player.setPos(playerPos - size);
-			b.Move(playerPos - size, playerPos);
+			b.Swap(playerPos - size, playerPos);
 			player.addMove();
 		}
 		break;
@@ -51,7 +51,7 @@ void Game::Input()
 		if (playerPos + size < size*size)
 		{
 			player.setPos(playerPos + size);
-			b.Move(playerPos + size, playerPos);
+			b.Swap(playerPos + size, playerPos);
 			player.addMove();
 		}
 		break;
@@ -59,7 +59,7 @@ void Game::Input()
 		if (playerPos % size != 0)
 		{
 			player.setPos(playerPos - 1);
-			b.Move(playerPos - 1, playerPos);
+			b.Swap(playerPos - 1, playerPos);
 			player.addMove();
 		}
 		break;
@@ -67,12 +67,15 @@ void Game::Input()
 		if ((playerPos + 1) % size != 0)
 		{
 			player.setPos(playerPos + 1);
-			b.Move(playerPos + 1, playerPos);
+			b.Swap(playerPos + 1, playerPos);
 			player.addMove();
 		}
 		break;
 	case ('r') :
 		Reset();
+		break;
+	case('q') :
+		Quit();
 		break;
 	default:
 		break;
@@ -85,4 +88,8 @@ void Game::Reset()
 	system("cls");
 	b.Reset();
 	player.Reset();
+}
+
+void Game::Quit()
+{
 }

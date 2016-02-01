@@ -11,14 +11,14 @@ public:
 	void Print();
 	void Scramble();
 	bool CheckIfSolved();
-	void Move(int from, int to);
+	void Swap(int from, int to);
 	int getSize();
 	void Reset();
 
 private:
 	void Create();
 	int size;
-	Block temp;
+	//Block temp;
 	Block *blocks;
 };
 
